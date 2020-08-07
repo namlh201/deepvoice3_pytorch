@@ -666,7 +666,7 @@ Please set a larger value for ``max_position`` in hyper parameters.""".format(
             if hparams.masked_loss_weight > 0:
                 # decoder output domain mask
                 decoder_target_mask = sequence_mask(
-                    target_lengths / (r * downsample_step),
+                    torch.true_divide(target_lengths, (r * downsample_step)),
                     max_len=mel.size(1)).unsqueeze(-1)
                 if downsample_step > 1:
                     # spectrogram-domain mask
