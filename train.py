@@ -24,6 +24,7 @@ from docopt import docopt
 import sys
 import gc
 import platform
+import shutil
 from os.path import dirname, join
 from tqdm import tqdm, trange
 from datetime import datetime
@@ -806,6 +807,8 @@ def save_checkpoint(model, optimizer, step, checkpoint_dir, epoch,
         "global_step": step,
         "global_epoch": epoch,
     }, checkpoint_path)
+    shutil.rmtree('/content/drive/My Drive/{}'.format(checkpoint_dir))
+    shutil.copytree(checkpoint_dir, '/content/drive/My Drive/{}'.format(checkpoint_dir))
     print("Saved checkpoint:", checkpoint_path)
 
 
