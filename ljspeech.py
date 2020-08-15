@@ -27,13 +27,16 @@ def build_from_path(in_dir, out_dir, num_workers=1, tqdm=lambda x: x):
     with open(os.path.join(in_dir, 'metadata.csv'), encoding='utf-8') as f:
         for line in f:
             parts = line.strip().split('|')
-            wav_path = os.path.join(in_dir, 'wavs', '%s.wav' % parts[0])
-            text = parts[2]
-            if len(text) < hparams.min_text:
-                continue
-            futures.append(executor.submit(
-                partial(_process_utterance, out_dir, index, wav_path, text)))
-            index += 1
+
+			if len(parts) > 1 and len(parts[1]) > 0:
+				wav_path = os.path.join(in_dir, 'wavs', '%s.wav' % parts[0])
+				text = parts[2]
+				if len(text) < hparams.min_text:
+					continue
+				futures.append(executor.submit(
+					partial(_process_utterance, out_dir, index, wav_path, text)))
+				index += 1
+				
     return [future.result() for future in tqdm(futures)]
 
 
