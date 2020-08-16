@@ -807,8 +807,6 @@ def save_checkpoint(model, optimizer, step, checkpoint_dir, epoch,
         "global_step": step,
         "global_epoch": epoch,
     }, checkpoint_path)
-    shutil.rmtree('/content/drive/My Drive/{}'.format(checkpoint_dir))
-    shutil.copytree(checkpoint_dir, '/content/drive/My Drive/{}'.format(checkpoint_dir))
     print("Saved checkpoint:", checkpoint_path)
 
 
