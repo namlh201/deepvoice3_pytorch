@@ -14,7 +14,7 @@ and the property:
 """
 from deepvoice3_pytorch.frontend import en
 
-# optinoal Japanese frontend
+# optinal Japanese frontend
 try:
     from deepvoice3_pytorch.frontend import jp
 except ImportError:
@@ -31,3 +31,8 @@ try:
     from deepvoice3_pytorch.frontend import es
 except ImportError:
     es = None
+
+try:
+    from deepvoice3_pytorch.frontend import vi
+except ImportError:
+    vi = None

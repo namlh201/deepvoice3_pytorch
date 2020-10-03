@@ -12,7 +12,7 @@ hyperparameter. Some cleaners are English-specific. You'll typically want to use
 
 import re
 from unidecode import unidecode
-from .numbers import normalize_numbers
+from .numbers import normalize_numbers, vi_normalize_numbers
 
 
 # Regular expression matching whitespace:
@@ -70,6 +70,14 @@ def add_punctuation(text):
         text = text + '.'  # without this decoder is confused when to output EOS
     return text
 
+
+def vi_basic_cleaners(text):
+    '''Basic pipeline that lowercases and collapses whitespace without transliteration.'''
+    text = add_punctuation(text)
+    text = lowercase(text)
+    text = collapse_whitespace(text)
+    text = vi_normalize_numbers(text)
+    return text
 
 def basic_cleaners(text):
     '''Basic pipeline that lowercases and collapses whitespace without transliteration.'''

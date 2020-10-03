@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import inflect
+from num2words import num2words
 import re
 
 
@@ -11,6 +12,17 @@ _pounds_re = re.compile(r'£([0-9\,]*[0-9]+)')
 _dollars_re = re.compile(r'\$([0-9\.\,]*[0-9]+)')
 _ordinal_re = re.compile(r'[0-9]+(st|nd|rd|th)')
 _number_re = re.compile(r'[0-9]+')
+
+
+def _vi_num2words(num):
+   return num2words(num, lang='vi')
+
+def _vi_replace_number(text):
+    return re.sub('(?P<id>\d+)', lambda m: _vi_num2words(int(m.group('id'))), text)
+
+def vi_normalize_numbers(text):
+    text = _vi_replace_number(text)
+    return text
 
 
 def _remove_commas(m):

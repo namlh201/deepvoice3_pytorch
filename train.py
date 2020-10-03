@@ -380,12 +380,12 @@ def prepare_spec_image(spectrogram):
 def eval_model(global_step, writer, device, model, checkpoint_dir, ismultispeaker):
     # harded coded
     texts = [
-        "Scientists at the CERN laboratory say they have discovered a new particle.",
-        "There's a way to measure the acute emotional intelligence that has never gone out of style.",
-        "President Trump met with other leaders at the Group of 20 conference.",
-        "Generative adversarial network or variational auto-encoder.",
-        "Please call Stella.",
-        "Some have accepted this as a miracle without any physical explanation.",
+        "Gã khổng lồ công nghệ này đã ký các thỏa thuận hợp tác với 200 tờ báo ấn phẩm tại nhiều quốc gia.",
+        "Hồ Chí Minh đọc bản Tuyên ngôn Độc lập vào ngày 2 tháng 9 năm 1945 trên Quảng trường Ba Đình tại Hà Nội.",
+        "Hình như tôi chiều các em quá nên bây giờ các em hư đúng không.",
+        "Các sách giáo khoa Tiếng Việt đã được thẩm định cũng dựa trên khung thời lượng và chuẩn đầu ra để thiết kế cho phù hợp nhằm đi đến cái đích đó.",
+        "Thầy cô chúng ta đã thay đổi.",
+        "Đây là ký hiệu riêng của một số loại biển số ít phổ biến.",
     ]
     import synthesis
     synthesis._frontend = _frontend
